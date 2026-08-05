@@ -1,3 +1,11 @@
+import { Form } from '@/components/features/Simulation/Form';
+import { Hero } from '@/components/features/Simulation/Hero';
+
 export function SimulationFormPage() {
-  return <h1>Formulário de Simulação</h1>;
+  return (
+    <>
+      <Hero />
+      <Form />
+    </>
+  );
 }
