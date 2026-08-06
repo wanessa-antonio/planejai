@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { simulationSteps } from '@/data/simulation';
 import { useSimulationStorage } from '@/hooks/useSimulationStorage';
+import { isStepValid } from '@/utils/simulation';
 
 import { Button } from '@/components/shared/Button';
 
@@ -18,8 +19,17 @@ export function Form() {
 
   const step = simulationSteps[currentStep];
 
+  const currentStepValues = Object.fromEntries(
+    step.fields.map((field) => [
+      field.id,
+      formData[field.id] ?? '',
+    ]),
+  );
+
+  const canProceed = isStepValid(currentStepValues);
+
   function nextStep() {
-    if (currentStep < simulationSteps.length - 1) {
+    if (currentStep < simulationSteps.length - 1 && canProceed) {
       setCurrentStep((previousStep) => previousStep + 1);
     }
   }
@@ -54,7 +64,10 @@ export function Form() {
 
         <Button
           onClick={nextStep}
-          disabled={currentStep === simulationSteps.length - 1}
+          disabled={
+            currentStep === simulationSteps.length - 1 ||
+            !canProceed
+          }
         >
           Próximo
         </Button>
