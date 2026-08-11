@@ -6,10 +6,9 @@ export function formatCurrency(value: number): string {
 }
 
 export function parseCurrency(value: string): number {
-  return Number(
-    value
-      .replace(/[^\d,-]/g, '')
-      .replace(/\./g, '')
-      .replace(',', '.'),
-  );
+  const normalizedValue = value
+    .replace(/[^\d,]/g, '')
+    .replace(',', '.');
+
+  return Number(normalizedValue) || 0;
 }

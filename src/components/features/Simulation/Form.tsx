@@ -29,7 +29,10 @@ export function Form() {
   const canProceed = isStepValid(currentStepValues);
 
   function nextStep() {
-    if (currentStep < simulationSteps.length - 1 && canProceed) {
+    if (
+      currentStep < simulationSteps.length - 1 &&
+      canProceed
+    ) {
       setCurrentStep((previousStep) => previousStep + 1);
     }
   }
@@ -54,8 +57,9 @@ export function Form() {
         onChange={updateField}
       />
 
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-4">
         <Button
+          variant="secondary"
           onClick={previousStep}
           disabled={currentStep === 0}
         >
@@ -63,6 +67,7 @@ export function Form() {
         </Button>
 
         <Button
+          variant="primary"
           onClick={nextStep}
           disabled={
             currentStep === simulationSteps.length - 1 ||
