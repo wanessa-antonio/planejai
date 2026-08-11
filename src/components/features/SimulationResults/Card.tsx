@@ -2,17 +2,26 @@ import type { AIInsightCardProps } from './AIInsightCardProps';
 
 export function Card({
   title,
-  content,
+  description,
+  icon,
 }: AIInsightCardProps) {
   return (
-    <article className="rounded-xl border border-border bg-card p-6 shadow-sm">
-      <h2 className="mb-3 text-xl font-semibold">
-        {title}
-      </h2>
+    <article className="flex flex-col gap-4 rounded-xl border border-border bg-card p-6 shadow-sm">
+      {icon && (
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted-primary text-primary">
+          {icon}
+        </div>
+      )}
 
-      <p className="text-muted-foreground">
-        {content}
-      </p>
+      <div className="flex flex-col gap-2">
+        <h2 className="text-lg font-semibold text-foreground">
+          {title}
+        </h2>
+
+        <p className="leading-relaxed text-muted-foreground">
+          {description}
+        </p>
+      </div>
     </article>
   );
 }

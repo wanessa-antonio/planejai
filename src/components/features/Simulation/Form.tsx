@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { simulationSteps } from '@/data/simulation';
 import { useSimulationStorage } from '@/hooks/useSimulationStorage';
@@ -11,6 +12,7 @@ import { Progress } from './Progress';
 
 export function Form() {
   const [currentStep, setCurrentStep] = useState(0);
+  const navigate = useNavigate();
 
   const {
     data: formData,
@@ -28,11 +30,15 @@ export function Form() {
 
   const canProceed = isStepValid(currentStepValues);
 
+  const isLastStep =
+    currentStep === simulationSteps.length - 1;
+
   function nextStep() {
-    if (
-      currentStep < simulationSteps.length - 1 &&
-      canProceed
-    ) {
+    if (!canProceed) {
+      return;
+    }
+
+    if (!isLastStep) {
       setCurrentStep((previousStep) => previousStep + 1);
     }
   }
@@ -41,6 +47,14 @@ export function Form() {
     if (currentStep > 0) {
       setCurrentStep((previousStep) => previousStep - 1);
     }
+  }
+
+  function handleSubmit() {
+    if (!canProceed) {
+      return;
+    }
+
+    navigate('/resultado');
   }
 
   return (
@@ -66,16 +80,23 @@ export function Form() {
           Voltar
         </Button>
 
-        <Button
-          variant="primary"
-          onClick={nextStep}
-          disabled={
-            currentStep === simulationSteps.length - 1 ||
-            !canProceed
-          }
-        >
-          Próximo
-        </Button>
+        {isLastStep ? (
+          <Button
+            variant="primary"
+            onClick={handleSubmit}
+            disabled={!canProceed}
+          >
+            Gerar minha análise
+          </Button>
+        ) : (
+          <Button
+            variant="primary"
+            onClick={nextStep}
+            disabled={!canProceed}
+          >
+            Próximo
+          </Button>
+        )}
       </div>
     </section>
   );

@@ -1,4 +1,7 @@
+import type { ReactNode } from 'react';
+
 export interface AIInsightCardProps {
   title: string;
-  content: string;
+  description: string;
+  icon?: ReactNode;
 }
