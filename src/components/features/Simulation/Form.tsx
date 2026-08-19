@@ -1,21 +1,18 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { simulationSteps } from '@/data/simulation';
 import { useSimulationStorage } from '@/hooks/useSimulationStorage';
 import { isStepValid } from '@/utils/simulation';
 
 import { Button } from '@/components/shared/Button';
-
 import { FormStep } from './FormStep';
-import { Progress } from './Progress';
 
 export function Form() {
-  const [currentStep, setCurrentStep] = useState(0);
-  const navigate = useNavigate();
+  const [currentStep, setCurrentStep] =
+    useState(0);
 
   const {
-    data: formData,
+    data,
     updateField,
   } = useSimulationStorage();
 
@@ -24,28 +21,38 @@ export function Form() {
   const currentStepValues = Object.fromEntries(
     step.fields.map((field) => [
       field.id,
-      formData[field.id] ?? '',
+      data[field.id] ?? '',
     ]),
   );
 
-  const canProceed = isStepValid(currentStepValues);
+  const canProceed = isStepValid(
+    currentStepValues,
+    step.fields.map((field) => field.id),
+  );
 
-  const isLastStep =
-    currentStep === simulationSteps.length - 1;
+  function handleChange(
+    field: string,
+    value: string,
+  ) {
+    updateField(field, value);
+  }
 
-  function nextStep() {
+  function handleNext() {
     if (!canProceed) {
       return;
     }
 
-    if (!isLastStep) {
-      setCurrentStep((previousStep) => previousStep + 1);
+    if (
+      currentStep <
+      simulationSteps.length - 1
+    ) {
+      setCurrentStep((prev) => prev + 1);
     }
   }
 
-  function previousStep() {
+  function handlePrevious() {
     if (currentStep > 0) {
-      setCurrentStep((previousStep) => previousStep - 1);
+      setCurrentStep((prev) => prev - 1);
     }
   }
 
@@ -54,47 +61,60 @@ export function Form() {
       return;
     }
 
-    navigate('/resultado');
+    window.location.href = '/resultado';
   }
 
   return (
-    <section className="flex flex-col gap-6">
-      <Progress
-        currentStep={currentStep + 1}
-        totalSteps={simulationSteps.length}
-      />
+    <section className="mx-auto w-full max-w-2xl rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8">
+      <div className="mb-8">
+        <span className="text-sm text-muted-foreground">
+          Etapa {currentStep + 1} de{' '}
+          {simulationSteps.length}
+        </span>
+
+        <h2 className="mt-2 text-2xl font-semibold text-foreground">
+          {step.title}
+        </h2>
+
+        <p className="mt-2 text-muted-foreground">
+          {step.description}
+        </p>
+      </div>
 
       <FormStep
-        title={step.title}
         fields={step.fields}
-        values={formData}
-        onChange={updateField}
+        values={currentStepValues}
+        onChange={handleChange}
       />
 
-      <div className="flex justify-between gap-4">
+      <div className="mt-8 flex justify-between gap-4">
         <Button
+          type="button"
           variant="secondary"
-          onClick={previousStep}
+          onClick={handlePrevious}
           disabled={currentStep === 0}
         >
           Voltar
         </Button>
 
-        {isLastStep ? (
+        {currentStep <
+        simulationSteps.length - 1 ? (
           <Button
+            type="button"
+            variant="primary"
+            onClick={handleNext}
+            disabled={!canProceed}
+          >
+            Próximo
+          </Button>
+        ) : (
+          <Button
+            type="button"
             variant="primary"
             onClick={handleSubmit}
             disabled={!canProceed}
           >
-            Gerar minha análise
-          </Button>
-        ) : (
-          <Button
-            variant="primary"
-            onClick={nextStep}
-            disabled={!canProceed}
-          >
-            Próximo
+            Ver minha análise
           </Button>
         )}
       </div>

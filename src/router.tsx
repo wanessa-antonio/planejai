@@ -6,14 +6,15 @@ import { SimulationResultsPage } from '@/pages/SimulationResultsPage';
 
 export const router = createBrowserRouter([
   {
+    path: '/',
     element: <RootLayout />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <SimulationFormPage />,
       },
       {
-        path: '/resultado',
+        path: 'resultado',
         element: <SimulationResultsPage />,
       },
     ],

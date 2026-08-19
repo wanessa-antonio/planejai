@@ -2,19 +2,22 @@ export interface SimulationField {
   id: string;
   label: string;
   placeholder: string;
-  type: 'currency' | 'text';
+  type: 'text' | 'currency';
 }
 
 export interface SimulationStep {
-  id: string;
+  id: number;
   title: string;
+  description: string;
   fields: SimulationField[];
 }
 
 export const simulationSteps: SimulationStep[] = [
   {
-    id: 'income',
-    title: 'Qual é a sua renda?',
+    id: 1,
+    title: 'Sua renda',
+    description:
+      'Começamos entendendo quanto você recebe mensalmente.',
     fields: [
       {
         id: 'income',
@@ -25,8 +28,10 @@ export const simulationSteps: SimulationStep[] = [
     ],
   },
   {
-    id: 'expenses',
-    title: 'Quais são os seus gastos?',
+    id: 2,
+    title: 'Seus gastos',
+    description:
+      'Agora vamos entender como sua renda é utilizada.',
     fields: [
       {
         id: 'fixedExpenses',
@@ -37,24 +42,26 @@ export const simulationSteps: SimulationStep[] = [
       {
         id: 'variableExpenses',
         label: 'Gastos variáveis mensais',
-        placeholder: 'Ex.: R$ 800,00',
+        placeholder: 'Ex.: R$ 600,00',
         type: 'currency',
       },
     ],
   },
   {
-    id: 'goal',
-    title: 'Qual é a sua meta financeira?',
+    id: 3,
+    title: 'Seu objetivo',
+    description:
+      'Por fim, conte qual objetivo financeiro você deseja alcançar.',
     fields: [
       {
         id: 'goal',
-        label: 'Descreva sua meta',
+        label: 'Objetivo financeiro',
         placeholder: 'Ex.: Fazer uma viagem',
         type: 'text',
       },
       {
         id: 'goalAmount',
-        label: 'Quanto você precisa?',
+        label: 'Valor necessário',
         placeholder: 'Ex.: R$ 5.000,00',
         type: 'currency',
       },
