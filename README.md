@@ -1,89 +1,94 @@
-# React + TypeScript + Vite
+# 💰 Planej.ai - Educador Financeiro com IA
 
-# 💰 Planej.ai
+Aplicação desenvolvida com React que permite ao usuário informar sua renda, despesas e objetivos financeiros para receber uma análise personalizada utilizando Inteligência Artificial por meio da API Google Gemini.
 
-> 🚧 **Projeto em desenvolvimento**
+🔗 **Acesse o projeto online:**
 
-O **Planej.ai** é uma aplicação web de planejamento financeiro pessoal desenvolvida com **React**, **TypeScript** e **Tailwind CSS**.
+--- https://planejai.netlify.app/
 
-O objetivo do projeto é permitir que o usuário informe sua renda, despesas e metas financeiras para receber uma análise personalizada e sugestões práticas utilizando **Inteligência Artificial** por meio da **API Google Gemini**.
+## 🖼️ Preview
 
-Os dados da simulação são armazenados no navegador utilizando **localStorage**, proporcionando uma experiência simples e sem necessidade de backend.
+📸 **Preview do Projeto**
 
----
-
-## ✨ Funcionalidades
-
-### ✅ Implementadas
-
-- Estrutura inicial do projeto com Vite
-- React Router
-- Sistema de temas (Light/Dark)
-- Formulário em múltiplas etapas
-- Barra de progresso
-- Componentes reutilizáveis
-- Persistência dos dados com localStorage
-- Validação das etapas do formulário
-
-### 🚧 Em desenvolvimento
-
-- Página de resultados
-- Componentes de exibição dos insights
-- Integração com a API Google Gemini
-- Geração de análises financeiras personalizadas
-- Histórico de simulações
-- Melhorias de interface e responsividade
 
 ---
 
-## 🛠️ Tecnologias
+## 📌 Sobre o Projeto
 
-- React
+O **Planej.ai** é uma aplicação web de planejamento financeiro pessoal desenvolvida com React, TypeScript e Tailwind CSS.
+
+O usuário informa sua renda mensal, gastos fixos, gastos variáveis e objetivo financeiro. A aplicação utiliza a **API Google Gemini** para analisar essas informações e gerar um diagnóstico financeiro, sugestões personalizadas e um plano de ação.
+
+Os dados da simulação são armazenados no navegador utilizando **LocalStorage**, permitindo manter as informações mesmo após atualizar a página, sem necessidade de backend.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- React 19
 - TypeScript
 - Vite
 - Tailwind CSS v4
 - React Router
 - Context API
+- React Hooks
 - LocalStorage
 - Lucide React
-- Google Gemini API *(em desenvolvimento)*
+- React Loading Skeleton
+- Google Gemini API
 
 ---
 
-## 🚀 Como executar
+## ✨ Funcionalidades
 
-Clone o repositório:
-
-```bash
-git clone https://github.com/wanessa-antonio/planejai.git
-```
-
-Acesse a pasta:
-
-```bash
-cd planejai
-```
-
-Instale as dependências:
-
-```bash
-pnpm install
-```
-
-Execute o projeto:
-
-```bash
-pnpm dev
-```
+- Formulário financeiro em múltiplas etapas
+- Barra de progresso
+- Validação dos dados preenchidos
+- Armazenamento das informações no LocalStorage
+- Geração de diagnóstico financeiro com IA
+- Integração com Google Gemini API
+- Indicador de carregamento durante a análise
+- Tratamento de erros
+- Interface responsiva
+- Componentização e reutilização de componentes
 
 ---
 
-## 🎯 Objetivo
+## 🎯 Objetivos do Projeto
 
-Este projeto faz parte do meu portfólio de desenvolvimento Front-End e está sendo desenvolvido com foco em boas práticas de arquitetura, componentização, reutilização de código e organização de projetos React.
+- Praticar desenvolvimento de aplicações com React e TypeScript
+- Aplicar componentização e reutilização de código
+- Trabalhar gerenciamento de estado com React Hooks
+- Implementar persistência de dados utilizando LocalStorage
+- Integrar uma aplicação Front-End com uma API de Inteligência Artificial
+- Desenvolver uma interface responsiva e acessível
+- Aplicar boas práticas de organização e arquitetura de projetos
+- Explorar o uso de Inteligência Artificial em aplicações Front-End
 
 ---
 
-## 📌 Status
+## 💼 Competências Demonstradas
 
-🚧 Em desenvolvimento.
+- Desenvolvimento de interfaces com React
+- TypeScript
+- React Hooks
+- React Router
+- Context API
+- Gerenciamento de estado
+- Persistência de dados com LocalStorage
+- Consumo de APIs
+- Integração com Google Gemini
+- Tratamento de estados de loading e erro
+- Componentização
+- Design responsivo
+- Tailwind CSS
+- Organização e arquitetura de projetos Front-End
+- Integração de Inteligência Artificial em aplicações web
+
+---
+
+## 👩‍💻 Desenvolvedora
+
+**Wanessa Antonio**
+
+
