@@ -8,7 +8,7 @@ https://planejai.netlify.app/
 
 ## 🖼️ Preview
 
-![Preview do Projeto](.png)
+![Preview do Projeto](planejai.png)
 
 
 ---
