@@ -4,11 +4,11 @@ Aplicação desenvolvida com React que permite ao usuário informar sua renda, d
 
 🔗 **Acesse o projeto online:**
 
---- https://planejai.netlify.app/
+https://planejai.netlify.app/
 
 ## 🖼️ Preview
 
-📸 **Preview do Projeto**
+![Preview do Projeto](.png)
 
 
 ---
